@@ -1,8 +1,7 @@
 clear; close all; clc;
-pkg load statistics;
 csvs = cell(2,1);
-csvs{1} = csvread("C11_Odd_Sum.csv");
-csvs{2} = csvread("C11_Even_Sum.csv");
+csvs{1} = importdata("C11_Odd_Sum.xlsx");
+csvs{2} = importdata("C11_Even_Sum.xlsx");
 
 for h=1:2 %odd -> even
   data = csvs{h};
@@ -11,13 +10,14 @@ for h=1:2 %odd -> even
   for i=1:row
       for j=1:col
         if i==j
-              continue;
-          end
-          select_rate(i, j) = data(i, j)/(data(i, j) + data(j, i));
+            continue;
+        end
+      select_rate(i, j) = data(i, j)/(data(i, j) + data(j, i));
       end
   end
 
-  Z=norminv(select_rate);
+  % Z=norminv(select_rate);
+  Z = -sqrt(2)*erfcinv(2*select_rate);
 
   means = zeros(row,1);
   for i=1:row

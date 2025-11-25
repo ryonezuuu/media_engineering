@@ -1,7 +1,7 @@
 clear; close all; clc;
 
 img = uint8(zeros(50,50,3));
-msg = "This is a message.\nCan you read this?";
+msg = 'This is a message. Can you read this?';
 [row, col, ~] = size(img);
 
 for l=1:length(msg)
@@ -20,7 +20,7 @@ end
 imshow(img);
 
 for i=1:row
-  str = "";
+  str = '';
   for j=1:8
     r = img(i,j,1);
     r_bin = dec2bin(r);

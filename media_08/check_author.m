@@ -5,13 +5,13 @@ img{2} = imread("C11_Even_Img01.bmp");
 
 for h=1:2
   for i=1:10
-    str = "";
+    str = [];
     for j=1:8
       r = img{h}(i,j,1);
       r_bin = dec2bin(r);
       r_finalbit = r_bin(end);
       str = [str, r_finalbit];
-    endfor
+    end
     fprintf("%c",char(bin2dec(str)));
   end
   fprintf("\n");
